@@ -7,6 +7,9 @@
 #define SUCCESS 0
 #define FAILURE -1
 
+#define DATA_NOT_FOUND -2
+#define LIST_EMPTY -3
+
 typedef int data_t;
 typedef struct node
 {
