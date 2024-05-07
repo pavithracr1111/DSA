@@ -1,7 +1,7 @@
 #include "sll.h"
 
 // function to delete at last
-int delete_at_last(Slist **head)
+int sl_delete_last(Slist **head)
 {
     // checking if list is empty or not
     if (*head == NULL) // if list is empty

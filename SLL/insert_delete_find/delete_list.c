@@ -1,7 +1,7 @@
 #include "sll.h"
 
 // function to delete list
-int delete_list(Slist **head)
+int sl_delete_list(Slist **head)
 {
     // checking if list is empty or not
     if (*head == NULL) // if list is empty
@@ -10,15 +10,15 @@ int delete_list(Slist **head)
     }
     else
     {
-        Slist *temp = *head;
-        while (temp->link != NULL)
+        Slist *temp = *head; //create a local reference pointer temp
+        while (temp != NULL) // run a loop till temp equals to NULL
         {
-            *head = temp->link;
-            free(temp);
+            temp = *head; //points temp to first node by using head
+            *head = temp->link; //head will be points to next node (sec node)
+            free(temp); // deallocate the temp memory(first node memory)
+            temp = *head; // points next node by using head to temp
         }
-        *head = temp->link;
-        free(head);
-        *head = NULL;
+        *head = NULL; //deallocate the memory of head by NULL
         return SUCCESS;
     }
 }

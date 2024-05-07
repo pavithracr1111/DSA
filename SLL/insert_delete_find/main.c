@@ -1,82 +1,108 @@
 #include "sll.h"
 
-int select_operation(void);
 int main()
 {
-    system("clear");
-    Slist *head = NULL;
+	
+	int option, data, key;
 
-    int choice;
-    int data;
-    char option;
 
-    do
-    {
-        choice = select_operation();
-        switch (choice)
-        {
-        case 1:
-            printf("Enter data to insert at last\n");
-            scanf("%d", &data);
+	Slist *head = NULL; //initialize the header to NULL
 
-            if (insert_at_last(&head, data) == FAILURE)
-            {
-                printf("Failed to inset at last\n");
-            }
-            break;
-        case 2:
-            printf("Enter data to insert at first\n");
-            scanf("%d", &data);
+	printf("1. Insert last\n2. Insert first\n3. Delete Last\n4. Delete first\n5. Delete list\n6. Find node\n7. Print list\n8. Exit\nEnter your choice : ");
 
-            if (insert_at_first(&head, data) == FAILURE)
-            {
-                printf("Failed to inset at first\n");
-            }
-            break;
-        case 3:
-            if (delete_at_first(&head) == FAILURE)
-            {
-                printf("Failed to delete at first\n");
-            }
-            break;
-        case 4:
+	while (1)
+	{
 
-            if (delete_at_last(&head) == FAILURE)
-            {
-                printf("Failed to  delete at last\n");
-            }
-            break;
-            case 5:
-            if (delete_list(&head) == FAILURE)
-            {
-                printf("Failed to delete at first\n");
-            }
-            break;
-        case 6:
-            print_last(head);
-            break;
-        }
-        printf("Want to continue (Y / N) -> ");
-        scanf(" %c", &option);
-    } while (option == 'y' || option == 'Y');
+		/*ask user options*/
 
-    return 0;
+		scanf("%d", &option);
+		
+		switch (option)
+		{
+			case 1:
+				printf("Enter the number that you want to insert at last: ");
+				scanf("%d", &data);
+			
+                
+				/*insert_at_last function call*/
+				if (insert_at_last(&head, data) == FAILURE) //pass by reference
+				{
+					printf("INFO : Insertion Failure\n");
+				}
+				break;
+			case 2:
+				/*To insert the element at first */
+				printf("Enter the element you have to insert at the first : ");
+				scanf("%d", &data);
+				
+				if (insert_at_first(&head, data) == -1)
+				{
+					printf("INFO : Insertion Failure\n");
+				}
+				break;
+
+			case 3:
+				/* Delete a last link*/
+				if (sl_delete_last(&head) == -1)
+				{
+					printf("INFO : Delete last Failure\nList is empty\n");
+				}
+				else
+				{
+				    printf("INFO : Delete last successfull\n");
+				}
+			
+				break;
+			case 5:
+				/* Delete list */
+				if (sl_delete_list(&head) == -1)
+				{
+					printf("INFO : Delete list Failure\nList is empty\n");
+				}
+				else
+				{
+					printf("INFO : Delete list Successfull\n");
+				}
+	
+				break;
+			case 4:
+				/*To delete first node */
+				if (sl_delete_first(&head))
+				{
+					printf("INFO : Delete first Failure\n List is empty\n");
+				}
+				else
+				{
+				    printf("INFO : Delete first successfull\n");
+				}
+				break;
+			case 6:
+				printf("Enter the key to find : ");
+				scanf("%d", &key);
+				int count;
+				if ((count = find_node(head, key)) == FAILURE)
+				{
+					printf("INFO : Failure\nList is empty or Key not found\n");
+				}
+				else
+				{
+					printf("%d found in the list at the position %d\n", key, count);
+				}
+		
+				break;
+			case 7:
+				/* print list function call*/
+				print_list(head);
+					break;
+	
+			case 8:
+				return SUCCESS;
+			default: printf("Enter proper choice !!\n");
+			
+					 break;
+		}
+	    
+
+	}
 }
 
-// function to select the opartion
-
-int select_operation(void)
-{
-    int choice;
-    printf("Options : \n");
-    printf("1. Insert at last\n");
-    printf("2. Insert at first\n");
-    printf("3. Delete at first\n");
-    printf("4. Delete at last\n");
-    printf("5. Delete the list\n");
-    printf("6. Print the list\n");
-
-    scanf("%d", &choice);
-
-    return choice;
-}

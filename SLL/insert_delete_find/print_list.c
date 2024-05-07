@@ -1,20 +1,19 @@
 #include "sll.h"
 
-// function to print the list
-void print_last(Slist *head) 
+void print_list(Slist *head)
 {
-    if(head == NULL)
-    {
-        printf("NO nodes to print\n");
-    }
+	if (head == NULL)
+	{
+		printf("INFO : List is empty\n");
+	}
     else
     {
-        printf("head -> ");
-        while(head)
-        {
-            printf("%d -> ",head->data);
-            head = head->link;
-        }
-        printf("NULL\n");
+	    while (head)		
+	    {
+		    printf("%d -> ", head -> data);
+		    head = head -> link;
+	    }
+
+	    printf("NULL\n");
     }
-}                
+}

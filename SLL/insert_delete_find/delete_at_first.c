@@ -1,7 +1,6 @@
 #include "sll.h"
 
-// function to delete at first
-int delete_at_first(Slist **head)
+int sl_delete_first(Slist **head) // function to delete at first
 {
     // checking if list is empty or not
     if (*head == NULL) // if list is empty
@@ -15,4 +14,5 @@ int delete_at_first(Slist **head)
         free(temp);          // deallocate the memory of temp
         return SUCCESS;
     }
+
 }
