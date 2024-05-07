@@ -34,19 +34,25 @@ int main()
             }
             break;
         case 3:
-            if (delete_at_first(&head, data) == FAILURE)
+            if (delete_at_first(&head) == FAILURE)
             {
                 printf("Failed to delete at first\n");
             }
             break;
         case 4:
 
-            if (delete_at_last(&head, data) == FAILURE)
+            if (delete_at_last(&head) == FAILURE)
             {
                 printf("Failed to  delete at last\n");
             }
             break;
-        case 5:
+            case 5:
+            if (delete_list(&head) == FAILURE)
+            {
+                printf("Failed to delete at first\n");
+            }
+            break;
+        case 6:
             print_last(head);
             break;
         }
@@ -67,7 +73,8 @@ int select_operation(void)
     printf("2. Insert at first\n");
     printf("3. Delete at first\n");
     printf("4. Delete at last\n");
-    printf("5. Print the list\n");
+    printf("5. Delete the list\n");
+    printf("6. Print the list\n");
 
     scanf("%d", &choice);
 

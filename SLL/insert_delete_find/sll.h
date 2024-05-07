@@ -20,8 +20,9 @@ typedef struct node
 int select_operation(void);                     // function to select the operation
 int insert_at_last(Slist **head, data_t data);  // function to insert at last
 int insert_at_first(Slist **head, data_t data); // function to insert at first
-int delete_at_first(Slist **head, data_t data); // function to delete at first
-int delete_at_last(Slist **head, data_t data); // function to delete at last
+int delete_at_first(Slist **head);              // function to delete at first
+int delete_at_last(Slist **head);               // function to delete at last
+int delete_list(Slist **head);               // function to delete list
 void print_last(Slist *head);                   // function to print the list
 
 #endif

@@ -1,7 +1,7 @@
 #include "sll.h"
 
 // function to delete at last
-int delete_at_last(Slist **head, data_t data)
+int delete_at_last(Slist **head)
 {
     // checking if list is empty or not
     if (*head == NULL) // if list is empty
@@ -23,8 +23,8 @@ int delete_at_last(Slist **head, data_t data)
             prev = temp; // before traversing store temp address to prev
             temp = temp->link;
         }
-        prev->link = NULL;
-        free(temp);
-        return SUCCESS;
+        prev->link = NULL; // to delete last node, make previous link to null
+        free(temp);        // deallocate the memory of temp
+        return SUCCESS;    // return success
     }
 }
