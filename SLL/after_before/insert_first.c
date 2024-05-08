@@ -1,28 +1,38 @@
 #include "sll.h"
 
-// function to insert at last
 int insert_at_first(Slist **head, data_t data)
 {
-    Slist *new = malloc(sizeof(Slist)); // create a node
-    if (new == NULL)                    // error checking (memory allocated or not)
-    {
-        return FAILURE;
-    }
+	/* Creating the new node */
+	Slist *new = malloc(sizeof(Slist));
 
-    // update data and link to new node
-    new->data = data;
-    new->link = NULL;
+	/* Check whether new node created or not */
+	if (new == NULL)
+	{
+		return FAILURE;
+	}
 
-    // checking if list is empty or not
-    if (*head == NULL) // if list is empty
-    {
-        *head = new;
-        return SUCCESS;
-    }
-    else
-    {
-        new->link = *head; // head has first node address, so update newlink with head
-        *head = new;       // then point new to head
-        return SUCCESS;
-    }
+	/* Fill the parts of the node */
+	new->data = data;
+	new->link = NULL;
+
+	/* If list is empty */
+	if (*head == NULL)
+	{
+		/*If *head is empty then create the first node */
+		*head = new;
+		return SUCCESS;
+	}
+	else
+	{
+		/* *head is not empty then store value i.e link in the temp variable */
+		Slist *temp = *head;
+
+		/* Stroring that new link in the head inserting the element at first */
+		*head = new;
+
+		/* Creating the link to next data */
+		new -> link = temp;
+	}
+		
+	return SUCCESS;
 }
