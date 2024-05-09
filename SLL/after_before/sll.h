@@ -21,7 +21,7 @@ typedef struct node
 int insert_at_first(Slist **head, data_t data);
 int sl_insert_after(Slist **head, data_t , data_t); // function to insert after a given node
 int sl_insert_before(Slist **head, data_t , data_t );// function to insert before a given node
-// int sl_insert_nth(Slist **head, data_t , data_t);
-// int sl_delete_element(Slist **head, data_t);
+int sl_insert_nth(Slist **head, data_t , data_t);
+int sl_delete_element(Slist **head, data_t);
 void print_list(Slist *head);
 #endif
