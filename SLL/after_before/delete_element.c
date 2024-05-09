@@ -1,4 +1,4 @@
-#include "sll.h" 
+#include "sll.h"
 int sl_delete_element(Slist **head, data_t data)
 {
     if (*head == NULL)
@@ -14,21 +14,22 @@ int sl_delete_element(Slist **head, data_t data)
         if (temp->data == data)
         {
             *head = temp->link; // Update head to the next node
-            free(temp); // Free the memory of the deleted node
+            free(temp);         // Free the memory of the deleted node
             return SUCCESS;
         }
 
         // Search for the node with the given data
         while (temp != NULL)
         {
-            if (temp->data == data)
+            if (temp->data != data)
             {
-                prev->link = temp->link; // Update the link of the previous node
-                free(temp); // Free the memory of the deleted node
-                return SUCCESS; // Data found and deleted
+
+                prev = temp;
+                temp = temp->link;
             }
-            prev = temp;
-            temp = temp->link;
+            prev->link = temp->link; // Update the link of the previous node
+            free(temp);              // Free the memory of the deleted node
+            return SUCCESS;          // Data found and deleted
         }
 
         return DATA_NOT_FOUND; // Data not found in the list
