@@ -1,38 +1,53 @@
 #include "sll.h"
 
-int sl_insert_before(Slist **head, data_t g_data, data_t ndata) // function to insert before a given node
+// Function to insert a node before a given node containing a specific data value
+int sl_insert_before(Slist **head, data_t g_data, data_t ndata)
 {
-    if (head == NULL) // if list is empty
+    // Allocate memory for the new node
+    Slist *new = malloc(sizeof(Slist));
+    if (new == NULL)
     {
+        return FAILURE; // Memory allocation failed
+    }
+
+    // Update new node with the given data
+    new->data = ndata;
+    new->link = NULL;
+
+    // Check if the list is empty
+    if (*head == NULL)
+    {
+        // List is empty
         return LIST_EMPTY;
+    }
+    else if((*head)->data == g_data)
+    {
+        // Special case: Insert before the head
+        new->link = *head;
+        *head = new;
+        return SUCCESS;
     }
     else
     {
-        Slist *temp = *head; // create a local reference pointer
-        Slist *prev = NULL;  // create a another local pointer to store previous address
+        Slist *temp = *head; // Pointer to traverse the list
+        Slist *prev = NULL;  // Pointer to track the previous node
 
+        // Traverse the list to find the node with the given data
         while (temp != NULL)
         {
-            if (temp->data != g_data) // checking the given data is present in the node or not
+            if (temp->data != g_data) // If data doesn't match, move to the next node
             {
-                prev = temp;       // store temp address before traversing in prev pointer
-                temp = temp->link; // if the given data not present in the list, traverse the temp
+                prev = temp;
+                temp = temp->link;
             }
-
             else
             {
-                Slist *new = malloc(sizeof(Slist)); // allocate memory for new node
-                if (new == NULL)                    // do error check for memory allocated or not for new node
-                {
-                    return FAILURE;
-                }
-
-                new->data = ndata;      // update new data with the given data to add
-                new->link = prev->link; // establish the link b/w new node and previous node(update new link with the prev link to insert before)
-                prev->link = new;       // establish the link b/w prev and new (update prev link with the new add)
+                // Insert before the node with the given data
+                new->link = prev->link;
+                prev->link = new;
                 return SUCCESS;
             }
         }
-        return DATA_NOT_FOUND; // if the given data not present in the list, return failure mess
+        return DATA_NOT_FOUND; // If the node with the given data is not found
     }
 }

@@ -60,25 +60,25 @@ int main()
 
 
 				break;
-			// case 4:
-			// 	printf("Enter the node number : ");
-			// 	scanf("%d", &n);
-			// 	printf("Enter the number that you want to insert %dth position : ", n);
-			// 	scanf("%d", &ndata);
-			// 	/*insert_at_last function call*/
-			// 	if ((ret = sl_insert_nth(&head, ndata, n)) == POSITION_NOT_FOUND)//pass by reference
-			// 	{
-			// 		printf("INFO : %d Position not found\n", n);
-			// 	}
-			// 	else if (ret == LIST_EMPTY)
-			// 	{
-			// 		printf("INFO : List is empty\n");
-			// 	}
-			// 	else
-			// 	{
-			// 		printf("%d is successfully inserted at the position %d\n", gdata, n);
-			// 	}
-			// 	break;
+			case 4:
+				printf("Enter the node number : ");
+				scanf("%d", &n);
+				printf("Enter the number that you want to insert %dth position : ", n);
+				scanf("%d", &ndata);
+				/*insert_at_last function call*/
+				if ((ret = sl_insert_nth(&head, ndata, n)) == POSITION_NOT_FOUND)//pass by reference
+				{
+					printf("INFO : %d Position not found\n", n);
+				}
+				else if (ret == LIST_EMPTY)
+				{
+					printf("INFO : List is empty\n");
+				}
+				else
+				{
+					printf("%d is successfully inserted at the position %d\n", ndata, n);
+				}
+				break;
 			case 5:
 				// To delete the element
 				printf("Enter the element you need to delete : ");

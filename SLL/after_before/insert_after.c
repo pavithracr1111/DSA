@@ -3,7 +3,7 @@
 int sl_insert_after(Slist **head, data_t g_data, data_t ndata) // function to insert after a given node
 {
 
-    if (head == NULL) // if list is empty
+    if (*head == NULL) // if list is empty
     {
         return LIST_EMPTY;
     }
