@@ -22,11 +22,10 @@ int dl_insert_first(Dlist **head, Dlist **tail, int data) // function to insert 
     }
     else // if list is non empty
     {
-        new->next = new; 
-
-        (*head)->prev = *tail; // establishing a link b/w last node and new node
-        *head = new;
-
-        return SUCCESS;
+        // If list is not empty
+        new->next = *head;       // Update the next pointer of the new node to point to the current head
+        (*head)->prev = new;     // Update the prev pointer of the current head to point to the new node
+        *head = new;             // Update the head pointer to point to the new node
+        return SUCCESS; 
     }
 }
