@@ -6,14 +6,22 @@ int sorted_merge(Slist **head1, Slist **head2)
     {
         return LIST_EMPTY;
     }
-    else if (*head2 == NULL)
+    else if (*head2 == NULL && *head1 != NULL)
     {
-        sort(head1);
+        if (sort(head1) == SUCCESS)
+        {
+            return SUCCESS;
+        }
+        return FAILURE;
     }
-    else if (*head1 == NULL)
+    else if (*head1 == NULL && *head2 != NULL)
     {
         *head1 = *head2;
-        sort(head1);
+        if (sort(head1) == SUCCESS)
+        {
+            return SUCCESS;
+        }
+        return FAILURE;
     }
     else
     {
@@ -23,6 +31,10 @@ int sorted_merge(Slist **head1, Slist **head2)
             temp = temp->link;
         }
         temp->link = *head2;
-        sort(head1);
+        if (sort(head1) == SUCCESS)
+        {
+            return SUCCESS;
+        }
+        return FAILURE;
     }
 }

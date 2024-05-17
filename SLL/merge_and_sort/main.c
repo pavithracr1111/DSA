@@ -39,7 +39,7 @@ int main()
 				{
 					printf("\nList 1 -> ");
 					print_list(head1); // print list_1
-					printf("\n\nList 2 -> ");
+					printf("List 2 -> ");
 					print_list(head2); // print list_2
 					break;
 				}
