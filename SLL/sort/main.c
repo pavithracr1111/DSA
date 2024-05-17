@@ -43,6 +43,9 @@ int main()
 				/* print list function call*/
 				print_list(head);
 				break;
+			case 4:
+				return 0;
+				break;
 			default: printf("Enter proper choice !!\n");
 					 break;
 		}
