@@ -5,11 +5,12 @@ int dl_insert_after(Dlist **head, Dlist **tail, int gdata, int ndata) // functio
     // checking if list is empty or not
     if (*head == NULL) // if list is empty
     {
-        return FAILURE;
+        return LIST_EMPTY;
     }
     else // if list is non empty
     {
         Dlist *temp = *head; // create a local reference pointer to traverse through the list to find given data
+        
         while (temp != NULL) // run a loop till temp points to NULL
         {
             if (temp->data != gdata) // condition to check if the given data is not equal to temp data
@@ -23,8 +24,10 @@ int dl_insert_after(Dlist **head, Dlist **tail, int gdata, int ndata) // functio
                 {
                     return FAILURE;
                 }
+
                 new->prev = temp; // update new node data and prev link
                 new->data = ndata;
+                
                 if (temp->next == NULL) // if temp is last node
                 {
                     new->next = NULL;
@@ -39,6 +42,6 @@ int dl_insert_after(Dlist **head, Dlist **tail, int gdata, int ndata) // functio
                 return SUCCESS;
             }
         }
-        return FAILURE;
+        return DATA_NOT_FOUND;
     }
 }

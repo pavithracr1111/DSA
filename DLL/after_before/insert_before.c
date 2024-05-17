@@ -5,7 +5,7 @@ int dl_insert_before(Dlist **head, Dlist **tail, int gdata, int ndata) // functi
     // checking if list is empty or not
     if (*head == NULL) // if list is empty
     {
-        return FAILURE;
+        return LIST_EMPTY;
     }
     else // if list is non empty
     {

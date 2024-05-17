@@ -5,15 +5,15 @@ int find_loop(Slist *head)
 {
     Slist *fast = head;
     Slist *slow = head;
-    if(head == NULL)
+    if (head == NULL)
     {
         return LIST_EMPTY;
     }
-    while((fast != NULL) && (fast->link != NULL))
+    while ((fast != NULL) && (fast->link != NULL))
     {
-        fast = fast -> link -> link;
-        slow = slow -> link;
-        if(fast == slow)
+        fast = fast->link->link;
+        slow = slow->link;
+        if (fast == slow)
         {
             return SUCCESS;
         }

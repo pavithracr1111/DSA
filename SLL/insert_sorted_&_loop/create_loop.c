@@ -32,7 +32,7 @@ int create_loop(Slist **head, data_t data)
         }
         else
         {
-            return FAILURE; // Return FAILURE if the given data is not found
+            return DATA_NOT_FOUND; // Return FAILURE if the given data is not found
         }
     }
 }
